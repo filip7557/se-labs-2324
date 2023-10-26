@@ -1,5 +1,7 @@
 # Tutor
 
+## Autor: Filip Ćurić
+
 - git push origin master
 - git clone PATH
 - git add FILE
