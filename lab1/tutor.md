@@ -11,3 +11,4 @@
 - git log
 - git diff
 - git comming -m "PORUKA"
+- git pull
