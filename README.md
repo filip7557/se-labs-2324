@@ -1,8 +1,8 @@
 # Software Engineering Labs 2023/2024
 
-## Preddiplomski studij računarstvo
+## Preddiplomski studij računarstvo, smjer Programsko inženjerstvo
 
-# Author: FILIP ĆURIĆ
+# Author: Filip Ćurić
 
 # Setup
 
