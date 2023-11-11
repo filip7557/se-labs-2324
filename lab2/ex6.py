@@ -60,6 +60,8 @@ class Company:
         1. Employee name (age), job_title @ office
         2. Employee name (age), job_title @ office
         ..."""
+        print(self.name)
+        print("----------------")
         for employee in self.employees:
             print(f'{employee.name} ({employee.age}), {employee.title} @ {employee.office}')
 
