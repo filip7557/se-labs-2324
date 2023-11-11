@@ -1,3 +1,5 @@
+import json
+
 f = open('C:\\Users\\student\\Desktop\\fc-si-lv\\se-labs-2324-prp\\lab2\\ex2-text.csv', 'r', encoding="utf=8")
 
 text = []
@@ -13,4 +15,5 @@ for i in range(len(text) - 1):
     data = text[i+1].split(',')
     employees.append(dict([('employee', data[0]), ('title', data[1]), ('age', data[2]), ('office', data[3])]))
     
-print(employees)
+with open('C:\\Users\\student\\Desktop\\fc-si-lv\\se-labs-2324-prp\\lab2\\ex4-employees.json', 'w', encoding='utf-8') as f:
+    json.dump(employees, f)
