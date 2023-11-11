@@ -39,9 +39,9 @@ or delete the repo directory using a File Explorer
 ### Pulling the changes from this repo to your copy of the repo:
 
 ```
-git remote add upstream https://gitlab.com/levara/se-labs-2223-sr
-git fetch upstream main
-git merge upstream/main
+git remote add upstream https://gitlab.com/levara/se-labs-2324-prp
+git fetch upstream master
+git merge upstream/master
 ```
 
 The first line will add the original repo as additional remote repository to your project.
