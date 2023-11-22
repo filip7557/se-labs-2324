@@ -14,3 +14,11 @@ Don't forget to add virtual environment files to ` .gitignore `.
 
 Also: [Official Python tutorial](https://docs.python.org/3/tutorial/index.html)
 
+
+cd lab3
+python -m venv env
+source env/Scripts/activate
+pip install django
+
+winpty python manage.py
+
