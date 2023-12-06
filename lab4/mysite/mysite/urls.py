@@ -1,3 +1,5 @@
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 """
 URL configuration for mysite project.
 
@@ -23,3 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
