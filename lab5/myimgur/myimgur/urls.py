@@ -21,5 +21,5 @@ from images.views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
-    path('images/', include('images.urls')),
+    path('slike/', include('images.urls')),
 ]
