@@ -5,3 +5,7 @@ from django.http import HttpResponse
 def home(request):
     context = {}
     return render(request, 'images/home.html', context)
+
+def image_list(request):
+    context = {}
+    return render(request, 'images/list.html', context)
