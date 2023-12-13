@@ -1,5 +1,10 @@
 {% extends 'images/base.html' %}
 
 {% block content %}
-    <h2>Ovdje ide popis svih slika.</h2>
+    <h1>Slike</h1>
+    {% for image in images %}
+        <h3>{{ image.title }}</h3>
+        <p><small>{{ image.pub_date }}</small></p>
+        <img src="{{ image.url }}" style="width: 150px;">
+    {% endfor %}
 {% endblock content %}
