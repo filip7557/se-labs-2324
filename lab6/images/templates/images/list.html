@@ -1,6 +1,15 @@
 {% extends 'images/base.html' %}
 
 {% block content %}
+    <div>
+        <form action="#" method="get">
+            <select name="sort" onchange="this.form.submit()">
+                <option selected disabled>Choose sort</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </form>
+    </div>
     {% for image in images %}
         <h3>
             <a href="{% url 'images:detail' image.id %}">{{ image.title }}</a>

@@ -9,7 +9,11 @@ def home(request):
     return render(request, 'images/home.html', context)
 
 def image_list(request):
-    images = Image.objects.all()
+    sort = request.GET.get('sort', 'asc')
+    if sort == "desc":
+        images = Image.objects.order_by("-pub_date")
+    else:
+        images = Image.objects.order_by("pub_date")
     context = {
         'images': images,
     }
