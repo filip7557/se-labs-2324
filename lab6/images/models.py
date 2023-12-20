@@ -14,3 +14,6 @@ class Comment(models.Model):
     text = models.CharField(max_length=512)
     name = models.CharField(max_length=128)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.id}: {self.image.title} -> {self.text}"

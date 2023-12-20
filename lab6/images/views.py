@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Image
+from .models import Comment, Image
 
 # Create your views here.
 def home(request):
@@ -21,8 +21,11 @@ def image_list(request):
 
 def detail(request, image_id):
     image = get_object_or_404(Image, pk=image_id)
+    #comments = Comment.object.filter(image=image)
+    comments = image.comment_set.all()
     context = {
         'image': image,
+        'comments': comments,
     }
     return render(request, 'images/detail.html', context)
 
