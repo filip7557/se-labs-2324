@@ -28,9 +28,9 @@ def new(request):
         url = request.POST['url']
         pub_date = request.POST['pub_date']
 
-        image = Image(title, url, pub_date)
+        image = Image(title=title, url=url, pub_date=pub_date)
         image.save()
-        return HttpResponseRedirect(reverse('images:detail'), args=(image.id,))
+        return HttpResponseRedirect(reverse('images:detail', args=(image.id,)))
     context = {}
     return render(request, 'images/new.html', context)
     
