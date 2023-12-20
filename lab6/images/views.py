@@ -20,4 +20,8 @@ def detail(request, image_id):
         'image': image,
     }
     return render(request, 'images/detail.html', context)
+
+def new(request):
+    context = {}
+    return render(request, 'images/new.html', context)
     
