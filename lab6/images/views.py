@@ -40,4 +40,15 @@ def new(request):
         return HttpResponseRedirect(reverse('images:detail', args=(image.id,)))
     context = {}
     return render(request, 'images/new.html', context)
+
+def new_comment(request, image_id):
+    image = get_object_or_404(Image, pk=image_id)
+    if(request.method == "POST"):
+        text = request.POST['text']
+        name = request.POST['name']
+        image.comment_set.create(
+            text=text,
+            name=name,
+        )
+    return HttpResponseRedirect(reverse('images:detail', args=(image_id,)))
     
