@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyImgur</title>
+</head>
+<body>
+    <div>
+        <a href="/">MyImgur</a>
+        <a href="{% url 'images:list' %}">All images</a>
+    </div>
+    <h1>Welcome to MyImgur</h1>
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>
