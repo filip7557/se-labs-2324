@@ -2,4 +2,14 @@
 
 {% block content %}
 <h1>Submit new image</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">Title</label>
+    <input type="text" name="title">      <br>
+    <label for="">URL</label>
+    <input type="text" name="url">        <br>
+    <label for="">Published at</label>
+    <input type="date" name="pub_date">   <br>
+    <input type="submit" value="Submit image">
+</form>
 {% endblock content %}
