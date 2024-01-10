@@ -32,12 +32,14 @@ def detail(request, image_id):
     return render(request, 'images/detail.html', context)
 
 def new(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect("/")
     if request.method=="POST":
         title=request.POST['title']
         url=request.POST['URL']
         pub_date=request.POST['pub_date']
         
-        image= Image(title=title,url=url,pub_date=pub_date,)
+        image= Image(user=request.user,title=title,url=url,pub_date=pub_date,)
         image.save()
         return HttpResponseRedirect(
             reverse('images:detail', args=(image.id,))
