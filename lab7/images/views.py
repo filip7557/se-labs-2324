@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Image
+from .models import Image, Like
 from django.urls import reverse
 
 # Create your views here.
 def home(request):
-    context = {}
+    likes = Like.objects.order_by("created_at")
+    context = {
+        'likes': likes
+    }
     return render(request, 'images/home.html', context)
 
 def image_list(request):
@@ -24,9 +27,11 @@ def detail(request, image_id):
     image = get_object_or_404(Image, pk=image_id)
     #comments= Comment.object,filter(image=image)
     comments= image.comment_set.all()
+    liked = image.liked_by(request.user)
     context = {
         'image': image,
-                'comments' : comments,
+        'comments': comments,
+        'liked': liked,
 
     }
     return render(request, 'images/detail.html', context)
@@ -55,6 +60,21 @@ def new_comment(request, image_id):
             text=text,
             user=request.user,
         )
+    return HttpResponseRedirect(
+        reverse('images:detail', args=(image_id,))
+    )
+
+def toggle_like(request, image_id):
+    image = get_object_or_404(Image, pk=image_id)
+
+    if request.method == "POST" and request.user.is_authenticated:
+        like = request.user.like_set.filter(image=image).first()
+        if like:
+            like.delete()
+        else:
+            like = Like(user=request.user, image=image)
+            like.save()
+
     return HttpResponseRedirect(
         reverse('images:detail', args=(image_id,))
     )

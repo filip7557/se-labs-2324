@@ -11,6 +11,12 @@ class Image(models.Model):
     def __str__(self):
         return f"{self.id}: {self.title}"
     
+    def liked_by(self, user):
+        if isinstance(user, User):
+            return user.like_set.filter(image=self).count() > 0
+        else:
+            return False
+    
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, on_delete=models.CASCADE)
@@ -22,3 +28,8 @@ class Comment(models.Model):
     
     def name(self):
         return f"{self.user.username} ({self.user.email})"
+    
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)

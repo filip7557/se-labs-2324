@@ -2,6 +2,19 @@
 
 {% block content %}
 <h1>{{ image.title }}</h1>
+<form action="{% url 'images:toggle_like' image.id %}" method="post">
+    {% if liked %}
+    <input type="submit" value="Unlike ({{ image.like_set.count }})">
+    {% else %}
+    <input type="submit" value="Like ({{ image.like_set.count }})">
+    {% endif %}
+    {% csrf_token %}
+</form>
+<p>Liked by:
+    {% for like in image.like_set.all %}
+        {{ like.user.username }},
+    {% endfor %}
+</p>
 <p>Objavio: {{ image.user.username }} dana {{ image.pub_date }}</p>
 <img src="{{ image.url }}" style="width: 600px;">
 

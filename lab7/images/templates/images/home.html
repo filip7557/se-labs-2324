@@ -2,4 +2,8 @@
 
 {% block content %}
     <a href="{% url 'images:list' %}">Vidi naše slike!</a>
+    <h1>Activity</h1>
+    {% for like in likes %}
+        <p>{{like.user}} liked {{ like.image }} at {{ like.created_at }}</p>
+    {% endfor %}
 {% endblock content %}
