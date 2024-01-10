@@ -7,15 +7,18 @@
 
 <h1>Komentari</h1>
 <div>
+    {% if request.user.is_authenticated %}
     <form action="{% url 'images:new_comment' image.id %}" method="post">
-        <label for="">Name</label>
-        <input type="text" name="name" id=""> <br>
-        <label for="">Text</label>
-        <input type="text" name="text" id=""> <br>
+        <input type="text" name="text" id="">
         <input type="submit" value="Komentiraj">
         {% csrf_token %}
 
     </form>
+    {% else %}
+    <p>Za komentiranje moraš biti prijavljen.
+        <a href="{% url 'login' %}">Prijavi se</a>
+    </p>
+    {% endif %}
 </div>
 {% for comment in comments %}
 <p> 

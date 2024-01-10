@@ -47,12 +47,11 @@ def new(request):
 
 def new_comment(request, image_id):
     image= get_object_or_404(Image, pk=image_id)
-    if request.method == "POST":
+    if request.method == "POST" and request.user.is_authenticated:
         text=request.POST['text']
-        name=request.POST['name']
         image.comment_set.create(
             text=text,
-            name=name,
+            user=request.user,
         )
     return HttpResponseRedirect(
         reverse('images:detail', args=(image_id,))

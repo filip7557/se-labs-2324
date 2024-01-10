@@ -18,3 +18,6 @@ class Comment(models.Model):
     
     def __str__(self):
         return f"{self.id}: {self.image.title} -> {self.text}"
+    
+    def name(self):
+        return f"{self.user.username} ({self.user.email})"
