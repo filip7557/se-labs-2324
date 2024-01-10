@@ -1,0 +1,31 @@
+{% extends 'images/base.html' %}
+
+{% block content %}
+<h1>{{ image.title }}</h1>
+<p>{{ image.pub_date }}</p>
+<img src="{{ image.url }}" style="width: 600px;">
+
+<h1>Komentari</h1>
+<div>
+    <form action="{% url 'images:new_comment' image.id %}" method="post">
+        <label for="">Name</label>
+        <input type="text" name="name" id=""> <br>
+        <label for="">Text</label>
+        <input type="text" name="text" id=""> <br>
+        <input type="submit" value="Komentiraj">
+        {% csrf_token %}
+
+    </form>
+</div>
+{% for comment in comments %}
+<p> 
+    <strong>{{comment.name}}:</strong>
+    {{comment.text}} <br>
+    <small>{{comment.created_at}}</small>
+</p>
+{% empty %}
+<p> Nitko nije komentrao, budi prvi!!!! </p>
+
+{%endfor%}
+
+{% endblock content %}
